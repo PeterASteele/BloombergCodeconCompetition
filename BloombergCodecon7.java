@@ -110,16 +110,10 @@ Then B must pick 1, leaving 1 - A wins
 		int min = 2147000000;
 		int answer = -1;
 		for (int a = 0; a < possibilities.length; a++) {
-			//System.out.println("Start with" + numCoins + " taking "
-				//	+ possibilities[a]);
-			//System.out.println("Outcome" + solveGameP2(numCoins - possibilities[a], possibilities));
-			//System.out.println("DID YOU WIN???????????????" + solveGameP2(numCoins - possibilities[a], possibilities));
 			if (possibilities[a] < min
 					&& solveGameP2(numCoins - possibilities[a], possibilities)) {
-			//	System.out.println("win");
 				answer = possibilities[a];
 				min = possibilities[a];
-			//	System.out.println("**************************current record is " + min);
 			}
 		}
 		return answer;
@@ -131,24 +125,16 @@ Then B must pick 1, leaving 1 - A wins
 			return false;
 		}
 		if (numCoins == 0) {
-			//System.out.println("win");
-			//System.out.println("I win this case, " + numCoins);
 			return true;
 		} else {
 			for (int a = 0; a < possibilities.length; a++) {
 
-				//System.out.println(numCoins
-				//		+ "++++ is the number of coins remaining, enemy take"
-				//		+ possibilities[a]);
 				if (!ret) {
 					return ret;
 					
 				}
-				//System.out.println("Coins Left" + numCoins + " Enemy is taking " + possibilities[a]);
 				ret = (ret && solveGameP1(numCoins - possibilities[a],
 						possibilities));
-				//System.out.println(solveGameP1(numCoins - possibilities[a],
-						//possibilities));
 			}
 		}
 
@@ -162,18 +148,12 @@ Then B must pick 1, leaving 1 - A wins
 			return true;
 		}
 		if (numCoins == 0) {
-			//System.out.println("You win this case, " + numCoins);
-			// System.out.println("loss");
 			return false;
 		} else {
 			for (int a = 0; a < possibilities.length; a++) {
-			//	 System.out.println(numCoins +
-			//	 "_______ is the number of coins remaining, I take " +
-			//	 possibilities[a]);
 				if (ret) {
 					return true;
 				} else {
-					//System.out.println("Coins Left" + numCoins + " I am taking " + possibilities[a]);
 					ret = (ret || solveGameP2(numCoins - possibilities[a],
 							possibilities));
 				}
